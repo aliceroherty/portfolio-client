@@ -54,7 +54,7 @@ const Nav = () => {
 			<div>
 				<ScrollLink
 					to='contact'
-					className='bg-pink-400 text-white font-bold p-2 rounded-md px-5 hover:bg-pink-600 transition-colors duration-300 ease-in-out'
+					className='bg-pink-400 text-white font-bold p-2 rounded-md px-5 hover:bg-pink-600 transition-colors duration-300 ease-in-out cursor-pointer'
 					smooth
 				>
 					Hire Now

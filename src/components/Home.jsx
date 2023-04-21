@@ -5,8 +5,8 @@ import { KeyboardModelSmallScreen } from './KeyboardModelSmallScreen';
 
 const Home = () => {
 	return (
-		<div className='h-screen flex relative' id='home'>
-			<div className='w-full text-center lg:w-4/6 lg:text-left h-1/2 z-10 absolute top-0 left-0 flex flex-col pt-24'>
+		<div className='h-screen flex px-5 md:px-24' id='home'>
+			<div className='w-full text-center lg:w-4/6 lg:text-left h-1/2 z-10 flex flex-col pt-24'>
 				<h1 className='lg:text-6xl text-4xl font-bold lg:mt-56 sm:mt-0 mb-5 animate__animated animate__slideInLeft'>
 					My Name is{' '}
 					<span

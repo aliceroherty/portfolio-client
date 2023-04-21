@@ -1,56 +1,64 @@
-import { NavHashLink } from 'react-router-hash-link';
+import Scroll from 'react-scroll';
+const ScrollLink = Scroll.Link;
+import { NavLink } from 'react-router-dom';
 
 const Nav = () => {
 	return (
-		<nav className='h-[7vh] flex justify-between items-center py-0 w-full sticky top-0 bg-[#121212] z-50'>
+		<nav className='flex justify-between items-center w-screen fixed top-0 bg-[#121212] z-50 py-5 px-5 md:px-24'>
 			<ul className='flex flex-row items-center list-none gap-5 m-0 h-full'>
 				<li>
-					<NavHashLink
-						to='#home'
+					<ScrollLink
+						to='home'
 						className='cursor-pointer text-white text-xl hover:text-gray-500 transition-colors ease-in-out duration-300'
+						activeClass='active'
 						smooth
+						spy
 					>
 						Home
-					</NavHashLink>
+					</ScrollLink>
 				</li>
 				<li>
-					<NavHashLink
-						to='#about'
+					<ScrollLink
+						to='about'
 						className='cursor-pointer text-white text-xl hover:text-gray-500 transition-colors ease-in-out duration-300'
+						activeClass='active'
 						smooth
+						spy
 					>
 						About
-					</NavHashLink>
+					</ScrollLink>
 				</li>
 				<li>
-					<NavHashLink
-						to='#projects'
+					<ScrollLink
+						to='projects'
 						className='cursor-pointer text-white text-xl hover:text-gray-500 transition-colors ease-in-out duration-300'
-						activeClassName='active'
+						activeClass='active'
 						smooth
+						spy
 					>
 						Projects
-					</NavHashLink>
+					</ScrollLink>
 				</li>
 				<li>
-					<NavHashLink
-						to='#contact'
+					<ScrollLink
+						to='contact'
 						className='cursor-pointer text-white text-xl hover:text-gray-500 transition-colors ease-in-out duration-300'
-						activeClassName='active'
+						activeClass='active'
 						smooth
+						spy
 					>
 						Contact
-					</NavHashLink>
+					</ScrollLink>
 				</li>
 			</ul>
 			<div>
-				<NavHashLink
-					to='#contact'
+				<ScrollLink
+					to='contact'
 					className='bg-pink-400 text-white font-bold p-2 rounded-md px-5 hover:bg-pink-600 transition-colors duration-300 ease-in-out'
 					smooth
 				>
 					Hire Now
-				</NavHashLink>
+				</ScrollLink>
 			</div>
 		</nav>
 	);

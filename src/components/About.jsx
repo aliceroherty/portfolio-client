@@ -1,6 +1,10 @@
 const About = () => {
 	return (
-		<div className='w-full h-screen text-left' id='about'>
+		<div
+			className='w-full h-screen text-left px-5 md:px-24'
+			id='about'
+			name='about'
+		>
 			<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
 				About Me
 			</h4>

@@ -4,5 +4,5 @@ body {
 }
 
 .active {
-	color: rgb(244 114 182);
+	color: rgb(249 168 212) !important;
 }

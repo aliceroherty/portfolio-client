@@ -1,13 +1,12 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { KeyboardModel } from './KeyboardModel';
-import { KeyboardModelSmallScreen } from './KeyboardModelSmallScreen';
 
 const Home = () => {
 	return (
 		<div className='h-screen flex px-5 md:px-24' id='home'>
 			<div className='w-full text-center lg:w-4/6 lg:text-left h-1/2 z-10 flex flex-col pt-24'>
-				<h1 className='lg:text-6xl text-4xl font-bold lg:mt-56 sm:mt-0 mb-5 animate__animated animate__slideInLeft'>
+				<h1 className='lg:text-6xl text-4xl font-bold xl:mt-56 lg:mt-10 mt-6 mb-5 animate__animated animate__slideInLeft'>
 					My Name is{' '}
 					<span
 						className='text-pink-300  animate__animated  animate__bounce inline-block'
@@ -30,26 +29,12 @@ const Home = () => {
 					Learn More
 				</a>
 			</div>
-			<div className='opacity-0 lg:opacity-100'>
+			<div>
 				<Canvas
 					style={{ zIndex: 0, position: 'absolute', top: 0, left: 0 }}
 				>
 					<Suspense fallback={null}>
 						<KeyboardModel />
-						<ambientLight intensity={0.2} />
-						<directionalLight
-							intensity={0.4}
-							position={[0, 0, 10]}
-						/>
-					</Suspense>
-				</Canvas>
-			</div>
-			<div className='opacity-100 lg:opacity-0'>
-				<Canvas
-					style={{ zIndex: 0, position: 'absolute', top: 0, left: 0 }}
-				>
-					<Suspense fallback={null}>
-						<KeyboardModelSmallScreen />
 						<ambientLight intensity={0.2} />
 						<directionalLight
 							intensity={0.4}

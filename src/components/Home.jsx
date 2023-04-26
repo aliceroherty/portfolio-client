@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { KeyboardModel } from './KeyboardModel';
+import Scroll from 'react-scroll';
+const ScrollLink = Scroll.Link;
 
 const Home = () => {
 	return (
@@ -21,13 +23,13 @@ const Home = () => {
 				>
 					I Build Web and Mobile Applications.
 				</h3>
-				<a
-					href='#about'
-					className='mx-auto lg:mx-0 lg:text-2xl md:text-xl text-lg lg:w-48 md:w-38 w-40 animate__animated animate__zoomIn bg-pink-400 text-white font-bold p-5 rounded-md hover:bg-pink-600 transition-colors duration-300 ease-in-out text-center mt-5'
-					style={{ animationDelay: '3s' }}
+				<ScrollLink
+					to='about'
+					className='cursor-pointer mx-auto lg:mx-0 lg:text-2xl md:text-xl text-lg lg:w-48 md:w-38 w-40 animate__animated animate__zoomIn bg-pink-400 text-white font-bold p-5 rounded-md hover:bg-pink-600 transition-colors duration-300 ease-in-out text-center mt-5'
+					smooth
 				>
 					Learn More
-				</a>
+				</ScrollLink>
 			</div>
 			<div>
 				<Canvas

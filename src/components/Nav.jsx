@@ -3,7 +3,7 @@ const ScrollLink = Scroll.Link;
 
 const Nav = () => {
 	return (
-		<nav className='flex justify-between items-center w-screen fixed top-0 bg-[#121212] z-50 py-5 px-5 md:px-24'>
+		<nav className='flex justify-between items-center w-screen fixed top-0 bg-[#121212]/[.8] z-50 py-5 px-5 md:px-24'>
 			<ul className='flex flex-row items-center list-none gap-5 m-0 h-full'>
 				<li>
 					<ScrollLink

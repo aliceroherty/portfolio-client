@@ -9,6 +9,7 @@ A professional portfolio to showcase my work.
 -   Three.js
 -   Tailwind CSS
 -   Animate.css
+-   Framer Motion
 
 ### Disclaimer:
 

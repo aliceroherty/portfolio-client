@@ -12,14 +12,14 @@ const Home = () => {
 					My Name is{' '}
 					<span
 						className='text-pink-300  animate__animated  animate__bounce inline-block'
-						style={{ animationDelay: '1s' }}
+						style={{ animationDelay: '0.75s' }}
 					>
 						Alice
 					</span>
 				</h1>
 				<h3
 					className='lg:text-4xl md:text-2xl text-xl animate__animated animate__slideInLeft'
-					style={{ animationDelay: '2s' }}
+					style={{ animationDelay: '1.25s' }}
 				>
 					I Build Web and Mobile Applications.
 				</h3>

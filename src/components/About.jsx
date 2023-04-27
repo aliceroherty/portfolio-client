@@ -1,7 +1,13 @@
+import { motion } from 'framer-motion';
+
 const About = () => {
 	return (
-		<div
-			className='w-full h-screen text-left px-5 md:px-24'
+		<motion.div
+			initial={{ transform: 'translateX(-100%)', duration: '500ms' }}
+			whileInView={{ transform: 'translateX(0%)' }}
+			viewport={{ once: true }}
+			transition={{ duration: 1.25, type: 'spring' }}
+			className='w-full h-screen text-left px-5 md:px-24 mt-1'
 			id='about'
 			name='about'
 		>
@@ -31,7 +37,7 @@ const About = () => {
 					their job board which was built in .NET Core.
 				</p>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

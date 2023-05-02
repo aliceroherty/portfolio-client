@@ -9,6 +9,10 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.10.6",
+		"@emotion/styled": "^11.10.6",
+		"@mui/icons-material": "^5.11.16",
+		"@mui/material": "^5.12.2",
 		"@react-three/drei": "^9.65.3",
 		"animate.css": "^4.1.1",
 		"framer-motion": "^10.12.4",

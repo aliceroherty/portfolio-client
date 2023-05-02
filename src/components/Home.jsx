@@ -1,13 +1,15 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { KeyboardModel } from './KeyboardModel';
+import { Button } from '@mui/material';
+import DownArrowIcon from '@mui/icons-material/KeyboardArrowDown';
 import Scroll from 'react-scroll';
 const ScrollLink = Scroll.Link;
 
 const Home = () => {
 	return (
 		<div className='h-screen flex px-5 md:px-24' id='home'>
-			<div className='w-full text-center lg:w-4/6 lg:text-left h-1/2 z-10 flex flex-col pt-24'>
+			<div className='w-full text-center lg:w-4/6 lg:text-left h-1/2 z-10 flex flex-col items-center lg:items-start pt-24'>
 				<h1 className='lg:text-6xl text-4xl font-bold xl:mt-56 lg:mt-10 mt-6 mb-5 animate__animated animate__slideInLeft'>
 					My Name is{' '}
 					<span
@@ -18,17 +20,21 @@ const Home = () => {
 					</span>
 				</h1>
 				<h3
-					className='lg:text-4xl md:text-2xl text-xl animate__animated animate__slideInLeft'
+					className='lg:text-4xl md:text-2xl text-xl mb-5 animate__animated animate__slideInLeft'
 					style={{ animationDelay: '1.25s' }}
 				>
 					I Build Web and Mobile Applications.
 				</h3>
-				<ScrollLink
-					to='about'
-					className='cursor-pointer mx-auto lg:mx-0 lg:text-2xl md:text-xl text-lg lg:w-48 md:w-38 w-40 animate__animated animate__zoomIn bg-pink-400 text-white font-bold p-5 rounded-md hover:bg-pink-600 transition-colors duration-300 ease-in-out text-center mt-5'
-					smooth
-				>
-					Learn More
+				<ScrollLink to='about' smooth>
+					<Button
+						variant='outlined'
+						color='primary'
+						className='h-14 lg:w-48 md:w-38 w-40 animate__animated animate__zoomIn duration-300 ease-in-out text-center'
+						style={{ animationDelay: '2.25s' }}
+						endIcon={<DownArrowIcon />}
+					>
+						Learn More
+					</Button>
 				</ScrollLink>
 			</div>
 			<div>

@@ -1,10 +1,39 @@
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, CircularProgress } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import CheckIcon from '@mui/icons-material/Check';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from 'react';
 
 const Contact = () => {
+	const [success, setSuccess] = useState(null);
+	const [loading, setLoading] = useState(false);
+
+	const ref = useRef();
+
 	const onSubmit = (e) => {
 		e.preventDefault();
+		setLoading(true);
+
+		emailjs
+			.sendForm(
+				'service_bh6e8td',
+				'template_216pnnj',
+				ref.current,
+				'O1qSorvnoI16YFMqs'
+			)
+			.then(
+				(result) => {
+					console.log(result.text);
+					setSuccess(true);
+					setLoading(false);
+				},
+				(error) => {
+					console.log(error.text);
+					setSuccess(false);
+					setLoading(false);
+				}
+			);
 	};
 
 	return (
@@ -20,36 +49,56 @@ const Contact = () => {
 				Contact Me
 			</h4>
 			<form
+				ref={ref}
 				onSubmit={onSubmit}
-				className='flex flex-col gap-16 w-full my-auto h-[50%] lg:h-auto lg:w-[55%] lg:mx-0 bg-[#212121] px-14 py-16 rounded-lg justify-between'
+				className='flex flex-col gap-16 w-full my-auto h-auto lg:w-[55%] lg:mx-0 bg-[#212121] px-14 py-16 rounded-lg justify-between'
 			>
-				<TextField
-					label='What is your name?'
-					name='name'
-					fullWidth
-					required
-				/>
-				<TextField
-					label='What is your email?'
-					name='email'
-					fullWidth
-					required
-				/>
-				<TextField
-					label='What would you like to say?'
-					name='message'
-					fullWidth
-					multiline
-					required
-				/>
+				{!loading ? (
+					<>
+						<TextField
+							label='What is your name?'
+							name='name'
+							fullWidth
+							required
+							disabled={success}
+						/>
+						<TextField
+							label='What is your email?'
+							name='email'
+							fullWidth
+							required
+							disabled={success}
+						/>
+						<TextField
+							label='What would you like to say?'
+							name='message'
+							fullWidth
+							multiline
+							required
+							type='email'
+							disabled={success}
+						/>
+					</>
+				) : (
+					<CircularProgress className='m-auto' />
+				)}
 				<Button
 					variant='outlined'
-					endIcon={<SendIcon />}
+					endIcon={
+						loading ? (
+							<CircularProgress size='1rem' />
+						) : success ? (
+							<CheckIcon />
+						) : (
+							<SendIcon />
+						)
+					}
 					type='submit'
-					color='primary'
+					color={success ? 'success' : 'primary'}
 					className='h-14'
+					disabled={success}
 				>
-					Send
+					{loading ? 'Sending' : success ? 'Sent' : 'Send'}
 				</Button>
 			</form>
 		</motion.div>

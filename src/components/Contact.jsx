@@ -42,7 +42,7 @@ const Contact = () => {
 			whileInView={{ transform: 'translateX(0%)' }}
 			viewport={{ once: true }}
 			transition={{ duration: 1.25, type: 'spring' }}
-			className='w-full h-screen text-left px-5 md:px-24 mt-2'
+			className='w-full pb-16 text-left px-5 md:px-24 mt-2'
 			id='contact'
 		>
 			<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>

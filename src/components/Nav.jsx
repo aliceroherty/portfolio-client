@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Scroll from 'react-scroll';
+import { Button } from '@mui/material';
+import DownArrowIcon from '@mui/icons-material/KeyboardArrowDown';
 const ScrollLink = Scroll.Link;
 
 const Nav = () => {
@@ -133,12 +135,17 @@ const Nav = () => {
 			<div>
 				<ScrollLink
 					to='contact'
-					className={`${
-						open ? 'hidden text-opacity-0' : ''
-					}bg-pink-400 text-white font-bold p-2 rounded-md px-5 hover:bg-pink-600 transition-colors duration-300 ease-in-out cursor-pointer`}
 					smooth
+					className={open ? 'hidden text-opacity-0' : ''}
 				>
-					Hire Now
+					<Button
+						variant='outlined'
+						color='primary'
+						className=''
+						style={{ animationDelay: '2.25s' }}
+					>
+						Hire Now
+					</Button>
 				</ScrollLink>
 			</div>
 		</nav>

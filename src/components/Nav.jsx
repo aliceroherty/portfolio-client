@@ -60,7 +60,9 @@ const Nav = () => {
 								About
 							</ScrollLink>
 						</li>
-						<li>
+						{/* Link to projects component, to be implemented at a later date.
+
+                        <li>
 							<ScrollLink
 								to='projects'
 								className='cursor-pointer text-white text-3xl hover:text-gray-500 transition-colors ease-in-out duration-300'
@@ -70,7 +72,7 @@ const Nav = () => {
 							>
 								Projects
 							</ScrollLink>
-						</li>
+						</li> */}
 						<li>
 							<ScrollLink
 								to='contact'
@@ -109,7 +111,9 @@ const Nav = () => {
 						About
 					</ScrollLink>
 				</li>
-				<li>
+				{/* Link to projects component, to be implemented at a later date. 
+                
+                <li>
 					<ScrollLink
 						to='projects'
 						className='cursor-pointer text-white text-xl hover:text-gray-500 transition-colors ease-in-out duration-300'
@@ -119,7 +123,7 @@ const Nav = () => {
 					>
 						Projects
 					</ScrollLink>
-				</li>
+				</li> */}
 				<li>
 					<ScrollLink
 						to='contact'

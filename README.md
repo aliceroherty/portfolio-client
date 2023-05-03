@@ -10,6 +10,8 @@ A professional portfolio to showcase my work.
 -   Tailwind CSS
 -   Animate.css
 -   Framer Motion
+-   Material UI
+-   EmailJS
 
 ### Disclaimer:
 

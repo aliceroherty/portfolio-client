@@ -19,10 +19,7 @@ const Home = () => {
 						Alice
 					</span>
 				</h1>
-				<h3
-					className='lg:text-4xl md:text-2xl text-xl mb-5 animate__animated animate__slideInLeft'
-					style={{ animationDelay: '1.25s' }}
-				>
+				<h3 className='lg:text-4xl md:text-2xl text-xl mb-5 animate__animated animate__slideInLeft'>
 					I Build Web and Mobile Applications.
 				</h3>
 				<ScrollLink to='about' smooth>

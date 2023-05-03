@@ -53,35 +53,26 @@ const Contact = () => {
 				onSubmit={onSubmit}
 				className='flex flex-col gap-16 w-full my-auto h-auto lg:w-[55%] lg:mx-0 bg-[#212121] px-14 py-16 rounded-lg justify-between'
 			>
-				{!loading ? (
-					<>
-						<TextField
-							label='What is your name?'
-							name='name'
-							fullWidth
-							required
-							disabled={success}
-						/>
-						<TextField
-							label='What is your email?'
-							name='email'
-							fullWidth
-							required
-							disabled={success}
-						/>
-						<TextField
-							label='What would you like to say?'
-							name='message'
-							fullWidth
-							multiline
-							required
-							type='email'
-							disabled={success}
-						/>
-					</>
-				) : (
-					<CircularProgress className='m-auto' />
-				)}
+				<TextField
+					label='What is your name?'
+					name='name'
+					fullWidth
+					required
+				/>
+				<TextField
+					label='What is your email?'
+					name='email'
+					fullWidth
+					required
+				/>
+				<TextField
+					label='What would you like to say?'
+					name='message'
+					fullWidth
+					multiline
+					required
+					type='email'
+				/>
 				<Button
 					variant='outlined'
 					endIcon={
@@ -96,7 +87,7 @@ const Contact = () => {
 					type='submit'
 					color={success ? 'success' : 'primary'}
 					className='h-14'
-					disabled={success}
+					disabled={loading}
 				>
 					{loading ? 'Sending' : success ? 'Sent' : 'Send'}
 				</Button>

@@ -27,6 +27,7 @@ const Contact = () => {
 					console.log(result.text);
 					setSuccess(true);
 					setLoading(false);
+					ref.current.reset();
 				},
 				(error) => {
 					console.log(error.text);

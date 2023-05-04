@@ -4,6 +4,27 @@ import CheckIcon from '@mui/icons-material/Check';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
+import * as yup from 'yup';
+
+const validationSchema = yup.object({
+	name: yup
+		.string('Enter your name')
+		.required('Name is required.')
+		.min(2, 'Name should be at least 2 characters')
+		.max(30, 'Name should be less than 30 characters.')
+		.matches(/\D+$/, {
+			message: 'Name should not contain numbers.',
+		}),
+	email: yup
+		.string('Enter your email')
+		.email('Enter a valid email')
+		.required('Email is required.'),
+	message: yup
+		.string('Enter a message')
+		.min(10, 'Message should be at least 10 characters')
+		.max(10000, 'Message should be less than 10,000 characters')
+		.required('Message is required'),
+});
 
 const Contact = () => {
 	const [success, setSuccess] = useState(null);

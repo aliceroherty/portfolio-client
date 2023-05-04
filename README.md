@@ -12,6 +12,8 @@ A professional portfolio to showcase my work.
 -   Framer Motion
 -   Material UI
 -   EmailJS
+-   Formik
+-   Yup
 
 ### Disclaimer:
 

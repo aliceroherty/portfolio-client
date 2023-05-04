@@ -52,7 +52,7 @@ const Contact = () => {
 			<form
 				ref={ref}
 				onSubmit={onSubmit}
-				className='flex flex-col gap-16 w-full my-auto h-auto lg:w-[55%] lg:mx-0 bg-[#212121] px-14 py-16 rounded-lg justify-between'
+				className='flex flex-col gap-16 w-full my-auto h-auto lg:w-[55%] lg:mx-0 bg-[#212121] px-5 py-6 lg:px-14 lg:py-16 rounded-lg justify-between'
 			>
 				<TextField
 					label='What is your name?'

@@ -40,34 +40,31 @@ const Contact = () => {
 			message: '',
 		},
 		validationSchema: validationSchema,
-		onSubmit: (values) => {},
+		onSubmit: () => {
+			setLoading(true);
+
+			emailjs
+				.sendForm(
+					'service_bh6e8td',
+					'template_216pnnj',
+					ref.current,
+					'O1qSorvnoI16YFMqs'
+				)
+				.then(
+					(result) => {
+						console.log(result.text);
+						setSuccess(true);
+						setLoading(false);
+						ref.current.reset();
+					},
+					(error) => {
+						console.log(error.text);
+						setSuccess(false);
+						setLoading(false);
+					}
+				);
+		},
 	});
-
-	const onSubmit = (e) => {
-		e.preventDefault();
-		setLoading(true);
-
-		emailjs
-			.sendForm(
-				'service_bh6e8td',
-				'template_216pnnj',
-				ref.current,
-				'O1qSorvnoI16YFMqs'
-			)
-			.then(
-				(result) => {
-					console.log(result.text);
-					setSuccess(true);
-					setLoading(false);
-					ref.current.reset();
-				},
-				(error) => {
-					console.log(error.text);
-					setSuccess(false);
-					setLoading(false);
-				}
-			);
-	};
 
 	return (
 		<motion.div

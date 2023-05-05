@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
 import * as yup from 'yup';
+import { useFormik } from 'formik';
 
 const validationSchema = yup.object({
 	name: yup
@@ -31,6 +32,16 @@ const Contact = () => {
 	const [loading, setLoading] = useState(false);
 
 	const ref = useRef();
+
+	const formik = useFormik({
+		initialValues: {
+			name: '',
+			email: '',
+			message: '',
+		},
+		validationSchema: validationSchema,
+		onSubmit: (values) => {},
+	});
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -72,28 +83,41 @@ const Contact = () => {
 			</h4>
 			<form
 				ref={ref}
-				onSubmit={onSubmit}
+				onSubmit={formik.handleSubmit}
 				className='flex flex-col gap-16 w-full my-auto h-auto lg:w-[55%] lg:mx-0 bg-[#212121] px-5 py-6 lg:px-14 lg:py-16 rounded-lg justify-between'
 			>
 				<TextField
 					label='What is your name?'
 					name='name'
 					fullWidth
-					required
+					value={formik.values.name}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					error={formik.touched.name && Boolean(formik.errors.name)}
+					helperText={formik.touched.name && formik.errors.name}
 				/>
 				<TextField
 					label='What is your email?'
 					name='email'
 					fullWidth
-					required
+					value={formik.values.email}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					error={formik.touched.email && Boolean(formik.errors.email)}
+					helperText={formik.touched.email && formik.errors.email}
 				/>
 				<TextField
 					label='What would you like to say?'
 					name='message'
 					fullWidth
 					multiline
-					required
-					type='email'
+					value={formik.values.message}
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					error={
+						formik.touched.message && Boolean(formik.errors.message)
+					}
+					helperText={formik.touched.message && formik.errors.message}
 				/>
 				<Button
 					variant='outlined'

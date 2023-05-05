@@ -13,7 +13,7 @@ const validationSchema = yup.object({
 		.required('Name is required.')
 		.min(2, 'Name should be at least 2 characters')
 		.max(30, 'Name should be less than 30 characters.')
-		.matches(/\D+$/, {
+		.matches(/^\D+$/, {
 			message: 'Name should not contain numbers.',
 		}),
 	email: yup

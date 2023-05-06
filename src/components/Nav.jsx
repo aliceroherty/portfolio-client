@@ -8,7 +8,7 @@ const Nav = () => {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<nav className='flex justify-between items-center w-screen fixed top-0 bg-[#121212]/[.8] z-50 py-5 px-5 md:px-24'>
+		<nav className='flex justify-between items-center w-full fixed top-0 bg-[#121212]/[.8] z-50 py-5 px-5 md:px-24'>
 			<section className='flex lg:hidden'>
 				<div
 					className='space-y-2 [&>*]:hover:bg-gray-400 cursor-pointer [&>*]:transition-colors [&>*]:ease-in-out [&>*]:duration-300'

@@ -7,7 +7,7 @@ const About = () => {
 			whileInView={{ transform: 'translateX(0%)' }}
 			viewport={{ once: true }}
 			transition={{ duration: 1.25, type: 'spring' }}
-			className='w-full text-left px-5 md:px-24 mt-1 mb-24'
+			className='w-full text-left mt-1 mb-24'
 			id='about'
 			name='about'
 		>

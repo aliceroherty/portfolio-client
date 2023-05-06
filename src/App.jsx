@@ -26,8 +26,8 @@ const App = () => {
 	return (
 		<ThemeProvider theme={muiTheme}>
 			<HashRouter>
-				<div className='select-none'>
-					<Nav />
+				<Nav />
+				<div className='select-none px-5 md:px-24'>
 					<Home />
 					<About />
 					<Contact />

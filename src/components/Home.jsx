@@ -8,7 +8,7 @@ const ScrollLink = Scroll.Link;
 
 const Home = () => {
 	return (
-		<div className='h-screen flex px-5 md:px-24' id='home'>
+		<div className='h-screen flex' id='home'>
 			<div className='w-full text-center lg:w-4/6 lg:text-left h-1/2 z-10 flex flex-col items-center lg:items-start pt-24'>
 				<h1 className='lg:text-6xl text-4xl font-bold xl:mt-56 lg:mt-10 mt-6 mb-5 animate__animated animate__slideInLeft'>
 					My Name is{' '}

@@ -25,6 +25,7 @@
 		"react-scroll": "^1.8.9",
 		"react-three-fiber": "^6.0.13",
 		"three": "^0.151.3",
+		"vanilla-tilt": "^1.8.0",
 		"yup": "^1.1.1"
 	},
 	"devDependencies": {

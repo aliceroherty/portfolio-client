@@ -8,7 +8,7 @@ const Nav = () => {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<nav className='flex justify-between items-center w-full fixed top-0 bg-[#121212]/[.8] z-50 py-5 px-5 md:px-24'>
+		<nav className='flex justify-between items-center w-full fixed top-0 bg-[#121212]/[.8] z-50 py-5 px-5 md:px-24 select-none'>
 			<section className='flex lg:hidden'>
 				<div
 					className='space-y-2 [&>*]:hover:bg-gray-400 cursor-pointer [&>*]:transition-colors [&>*]:ease-in-out [&>*]:duration-300'
@@ -60,9 +60,7 @@ const Nav = () => {
 								About
 							</ScrollLink>
 						</li>
-						{/* Link to projects component, to be implemented at a later date.
-
-                        <li>
+						<li>
 							<ScrollLink
 								to='projects'
 								className='cursor-pointer text-white text-3xl hover:text-gray-500 transition-colors ease-in-out duration-300'
@@ -72,7 +70,7 @@ const Nav = () => {
 							>
 								Projects
 							</ScrollLink>
-						</li> */}
+						</li>
 						<li>
 							<ScrollLink
 								to='contact'
@@ -111,9 +109,7 @@ const Nav = () => {
 						About
 					</ScrollLink>
 				</li>
-				{/* Link to projects component, to be implemented at a later date. 
-                
-                <li>
+				<li>
 					<ScrollLink
 						to='projects'
 						className='cursor-pointer text-white text-xl hover:text-gray-500 transition-colors ease-in-out duration-300'
@@ -123,7 +119,7 @@ const Nav = () => {
 					>
 						Projects
 					</ScrollLink>
-				</li> */}
+				</li>
 				<li>
 					<ScrollLink
 						to='contact'

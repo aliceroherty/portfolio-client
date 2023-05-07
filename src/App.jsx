@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+import Projects from './components/Projects';
 import { HashRouter } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material';
 
@@ -30,6 +31,7 @@ const App = () => {
 				<div className='select-none px-5 md:px-24'>
 					<Home />
 					<About />
+					<Projects />
 					<Contact />
 				</div>
 			</HashRouter>

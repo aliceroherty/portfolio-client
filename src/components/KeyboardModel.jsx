@@ -8,7 +8,7 @@ import { useFrame } from '@react-three/fiber';
 
 export function KeyboardModel(props) {
 	const [position, setPosition] = useState([2.25, 0.5, 0]);
-	const { nodes, materials } = useGLTF('/assets/keyboard.gltf');
+	const { nodes, materials } = useGLTF('/assets/keyboard.glb');
 
 	// Tailwind breakpoints
 	const sizes = {
@@ -1391,4 +1391,4 @@ export function KeyboardModel(props) {
 	);
 }
 
-useGLTF.preload('/assets/keyboard.gltf');
+useGLTF.preload('/assets/keyboard.glb');

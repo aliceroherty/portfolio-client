@@ -40,7 +40,7 @@ const Contact = () => {
 			message: '',
 		},
 		validationSchema: validationSchema,
-		onSubmit: () => {
+		onSubmit: (data, { resetForm }) => {
 			setLoading(true);
 
 			emailjs
@@ -55,7 +55,7 @@ const Contact = () => {
 						console.log(result.text);
 						setSuccess(true);
 						setLoading(false);
-						ref.current.reset();
+						resetForm();
 					},
 					(error) => {
 						console.log(error.text);

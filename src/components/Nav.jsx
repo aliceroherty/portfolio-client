@@ -62,6 +62,17 @@ const Nav = () => {
 						</li>
 						<li>
 							<ScrollLink
+								to='timeline'
+								className='cursor-pointer text-white text-3xl hover:text-gray-500 transition-colors ease-in-out duration-300'
+								activeClass='active'
+								smooth
+								spy
+							>
+								Timeline
+							</ScrollLink>
+						</li>
+						<li>
+							<ScrollLink
 								to='projects'
 								className='cursor-pointer text-white text-3xl hover:text-gray-500 transition-colors ease-in-out duration-300'
 								activeClass='active'
@@ -107,6 +118,17 @@ const Nav = () => {
 						spy
 					>
 						About
+					</ScrollLink>
+				</li>
+				<li>
+					<ScrollLink
+						to='timeline'
+						className='cursor-pointer text-white text-xl hover:text-gray-500 transition-colors ease-in-out duration-300'
+						activeClass='active'
+						smooth
+						spy
+					>
+						Timeline
 					</ScrollLink>
 				</li>
 				<li>

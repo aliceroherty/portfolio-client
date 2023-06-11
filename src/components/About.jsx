@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
+import { slideInLeft } from '../utils/motion';
 
 const About = () => {
 	return (
 		<motion.div
-			initial={{ transform: 'translateX(-100%)', duration: '500ms' }}
-			whileInView={{ transform: 'translateX(0%)' }}
+			variants={slideInLeft}
+			initial='hidden'
+			whileInView='visible'
 			viewport={{ once: true }}
-			transition={{ duration: 1.25, type: 'spring' }}
 			className='w-full text-left mt-1 mb-24'
 			id='about'
 			name='about'

@@ -6,6 +6,7 @@ import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { slideInLeft } from '../utils/motion';
 
 const validationSchema = yup.object({
 	name: yup
@@ -68,10 +69,10 @@ const Contact = () => {
 
 	return (
 		<motion.div
-			initial={{ transform: 'translateX(-100%)', duration: '500ms' }}
-			whileInView={{ transform: 'translateX(0%)' }}
+			variants={slideInLeft}
+			initial='hidden'
+			whileInView='visible'
 			viewport={{ once: true }}
-			transition={{ duration: 1.25, type: 'spring' }}
 			className='w-full pb-16 text-left mt-2'
 			id='contact'
 		>

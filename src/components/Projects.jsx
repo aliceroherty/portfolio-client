@@ -3,6 +3,7 @@ import Project from './Project';
 import { motion } from 'framer-motion';
 import { login, logout, refresh } from '../utils/authentication';
 import { CircularProgress } from '@mui/material';
+import { slideInLeft } from '../utils/motion';
 
 const Projects = () => {
 	const [projects, setProjects] = useState([]);
@@ -56,10 +57,10 @@ const Projects = () => {
 
 	return (
 		<motion.div
-			initial={{ transform: 'translateX(-100%)', duration: '500ms' }}
-			whileInView={{ transform: 'translateX(0%)' }}
+			variants={slideInLeft}
+			initial='hidden'
+			whileInView='visible'
 			viewport={{ once: true }}
-			transition={{ duration: 1.25, type: 'spring' }}
 			className='w-full pb-16 text-left'
 			id='projects'
 		>

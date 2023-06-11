@@ -24,6 +24,7 @@
 		"react-scripts": "^5.0.1",
 		"react-scroll": "^1.8.9",
 		"react-three-fiber": "^6.0.13",
+		"react-vertical-timeline-component": "^3.6.0",
 		"three": "^0.151.3",
 		"vanilla-tilt": "^1.8.0",
 		"yup": "^1.1.1"

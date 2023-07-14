@@ -25,7 +25,7 @@ const Project = ({ title, imageUrl, githubUrl, description }) => {
 					component='img'
 					image={imageUrl}
 					alt={`${title} Image`}
-					sx={{ padding: '1em 1em 0 1em', objectFit: 'fill' }}
+					sx={{ padding: '1em 1em 0 1em', objectFit: 'contain' }}
 				/>
 				<CardContent>
 					<h3 className='text-2xl font-bold mb-2'>{title}</h3>

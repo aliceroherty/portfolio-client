@@ -27,7 +27,8 @@
 		"react-vertical-timeline-component": "^3.6.0",
 		"three": "^0.151.3",
 		"vanilla-tilt": "^1.8.0",
-		"yup": "^1.1.1"
+		"yup": "^1.1.1",
+		"vite": "^4.2.0"
 	},
 	"devDependencies": {
 		"@types/react": "^18.0.28",

@@ -1,20 +1,19 @@
-## React Portfolio Client
+# React Portfolio Client
 
-A professional portfolio to showcase my work.
+A professional portfolio to showcase my work experience, skillset, and past projects.
 
-### Technologies Used
+## Technologies Used
 
--   React
--   Vite
--   Three.js
--   Tailwind CSS
--   Animate.css
--   Framer Motion
--   Material UI
--   EmailJS
--   Formik
--   Yup
+- React
+- Vite
+- Three.js
+- Tailwind CSS
+- Animate.css
+- Framer Motion
+- Material UI
+- EmailJS
+- Formik
+- Yup
 
-### Disclaimer:
+## Usage
 
-This repo is a work in progress.

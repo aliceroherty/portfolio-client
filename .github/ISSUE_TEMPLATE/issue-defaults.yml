@@ -1,8 +1,11 @@
 name: "Issue Defaults"
 description: Auto-assign default issue properties.
-title: ""
-labels: []
+title: "<Enter issue title>"
 projects: ["aliceroherty/1"]
 assignees:
   - aliceroherty
-body: ""
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Provide a description.

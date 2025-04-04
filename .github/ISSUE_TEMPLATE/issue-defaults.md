@@ -4,7 +4,7 @@ about: Auto-assign default issue properties.
 title: ''
 labels: ''
 assignees: aliceroherty
-
+projects: ["aliceroherty/1"]
 ---
 
 

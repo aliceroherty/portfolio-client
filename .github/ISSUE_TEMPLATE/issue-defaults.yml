@@ -1,7 +1,8 @@
-name: Issue Defaults
+name: "Issue Defaults"
 description: Auto-assign default issue properties.
 title: ""
 labels: []
 projects: ["aliceroherty/1"]
 assignees:
   - aliceroherty
+body: ""

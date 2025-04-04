@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import Scroll from 'react-scroll';
-import { Button } from '@mui/material';
-import DownArrowIcon from '@mui/icons-material/KeyboardArrowDown';
-const ScrollLink = Scroll.Link;
+import { Button } from '@mui/material'
+const ScrollLink = Scroll.Link
 
 const Nav = () => {
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(false)
 
 	return (
 		<nav className='flex justify-between items-center w-full fixed top-0 bg-[#121212]/[.8] z-50 py-5 px-5 md:px-24 select-none'>
@@ -68,7 +67,7 @@ const Nav = () => {
 								smooth
 								spy
 							>
-								Timeline
+								Experience
 							</ScrollLink>
 						</li>
 						<li>
@@ -128,7 +127,7 @@ const Nav = () => {
 						smooth
 						spy
 					>
-						Timeline
+						Experience
 					</ScrollLink>
 				</li>
 				<li>
@@ -171,7 +170,7 @@ const Nav = () => {
 				</ScrollLink>
 			</div>
 		</nav>
-	);
-};
+	)
+}
 
 export default Nav;

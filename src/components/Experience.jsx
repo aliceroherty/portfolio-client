@@ -8,14 +8,14 @@ import 'react-vertical-timeline-component/style.min.css';
 import { motion } from 'framer-motion';
 import { slideInLeft } from '../utils/motion';
 
-const Timeline = () => {
+const Experience = () => {
 	const timelineElements = [
 		{
 			id: 1,
 			title: 'High School Diploma',
 			location: 'Dalhousie, New Brunswick',
 			description:
-				'Excelled in computer science course where projects where written in Visual Basic. Learned basics of core programming concepts.',
+				'<p id=\'description\'>Excelled in computer science course where projects where written in Visual Basic. Learned basics of core programming concepts.',
 			date: 'September 2014 - June 2018',
 			icon: 'school',
 		},
@@ -24,7 +24,7 @@ const Timeline = () => {
 			title: 'Web and Mobile App Development',
 			location: 'Moncton, New Brunswick',
 			description:
-				'Further cemented my skills in software development working primarily in .NET Framework with C#. Built hybrid and native mobile apps using React-Native, Swift, and Kotlin.',
+				'<p id=\'description\'>Further cemented my skills in software development working primarily in .NET Framework with C#. Built hybrid and native mobile apps using React-Native, Swift, and Kotlin.',
 			date: 'September 2018 - May 2020',
 			icon: 'school',
 		},
@@ -33,8 +33,16 @@ const Timeline = () => {
 			title: 'BC Jobs',
 			location: 'Vancouver, British Columbia (Remote)',
 			description:
-				'Migrated system from a data center to a cloud-based solution. Automated deployments using GitHub Actions. Maintained and expanded upon ASP.NET Core application. Improved site’s SEO resulting in an increase of traffic.',
+				'<ul id=\'description\' class="list-disc list-inside mt-4"><li class="mb-3">Migrated system from a data center to a cloud-based solution.</li><li class="mb-3">Automated deployments using GitHub Actions.</li><li class="mb-3">Maintained and expanded upon ASP.NET Core application.</li><li class="mb-3">Improved site’s SEO resulting in an increase of traffic.</li></ul>',
 			date: 'June 2020 - July 2022',
+			icon: 'work',
+		},
+		{
+			id: 4,
+			title: 'Populus Plus',
+			location: 'Fredericton, New Brunswick (Remote)',
+			description: '<ul id=\'description\' class="list-disc list-inside mt-4"><li class="mb-3">Helped to maintain applications used for conducting medical studies across Canada and the United States. Stack included Spring/Java, Flyway, Hibernate, Angular, and Postgres.</li><li class="mb-3">Assisted in implementing a system for consolidating health insurance information in Belize. Technologies used include Angular, Spring, Nifi, OHDSI, HAPI-FHIR, and Docker.</li><li>Aided in improvements and fixes relating to medical software used by medical professionals for tracking data such as patient encounters, prescriptions, and diagnoses. Project was built on Java using struts, Angular for newer sections, and JSP for legacy sections.</li></ul>',
+			date: 'August 2023 - Present',
 			icon: 'work',
 		},
 	];
@@ -50,7 +58,7 @@ const Timeline = () => {
 			name='timeline'
 		>
 			<h4 className='lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left'>
-				Timeline
+				Experience
 			</h4>
 			<VerticalTimeline>
 				{timelineElements.map((element) => {
@@ -81,8 +89,8 @@ const Timeline = () => {
 							<h5 className='vertical-timeline-element-subtitle'>
 								{element.location}
 							</h5>
-							<p id='description'>{element.description}</p>
-						</VerticalTimelineElement>
+                            <div dangerouslySetInnerHTML={{ __html: element.description }} />
+                        </VerticalTimelineElement>
 					);
 				})}
 			</VerticalTimeline>
@@ -90,4 +98,4 @@ const Timeline = () => {
 	);
 };
 
-export default Timeline;
+export default Experience;

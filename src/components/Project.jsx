@@ -14,26 +14,26 @@ const Project = ({ title, imageUrl, githubUrl, description }) => {
 	});
 
 	return (
-		<CardActionArea
-			sx={{ borderRadius: '4px' }}
-			className='tilt'
-			href={githubUrl}
-		>
-			<Card className='w-full h-full'>
-				<CardMedia
-					className='h-64'
-					component='img'
-					image={imageUrl}
-					alt={`${title} Image`}
-					sx={{ padding: '1em 1em 0 1em', objectFit: 'contain' }}
-				/>
-				<CardContent>
-					<h3 className='text-2xl font-bold mb-2'>{title}</h3>
-					<p className='font-light'>{description}</p>
-				</CardContent>
-			</Card>
-		</CardActionArea>
-	);
+        <CardActionArea
+            sx={{ borderRadius: '4px' }}
+            className="tilt"
+            href={githubUrl}
+        >
+            <Card className="w-full h-full">
+                <CardMedia
+                    className="h-64"
+                    component="img"
+                    image={`${import.meta.env.VITE_API_URL}/${imageUrl}`}
+                    alt={`${title} Image`}
+                    sx={{ padding: '1em 1em 0 1em', objectFit: 'contain' }}
+                />
+                <CardContent>
+                    <h3 className="text-2xl font-bold mb-2">{title}</h3>
+                    <p className="font-light">{description}</p>
+                </CardContent>
+            </Card>
+        </CardActionArea>
+    );
 };
 
 export default Project;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Scroll from 'react-scroll';
 import { Button } from '@mui/material'
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 const ScrollLink = Scroll.Link
 
 const Nav = () => {
@@ -163,10 +164,14 @@ const Nav = () => {
                     href="/assets/resume.pdf"
                 >
                     Download Resume
+                    <CloudDownloadIcon
+                        className="ml-2 flex justify-center align-center text-base"
+                        style={{ fontSize: '1.1rem' }}
+                    />
                 </Button>
             </div>
         </nav>
     );
-}
+};
 
 export default Nav;

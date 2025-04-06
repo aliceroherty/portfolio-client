@@ -163,10 +163,14 @@ const Nav = () => {
                     href="/assets/resume.pdf"
                 >
                     Download Resume
+                    <CloudDownloadIcon
+                        className="ml-2 flex justify-center align-center text-base"
+                        style={{ fontSize: '1.1rem' }}
+                    />
                 </Button>
             </div>
         </nav>
     );
-}
+};
 
 export default Nav;

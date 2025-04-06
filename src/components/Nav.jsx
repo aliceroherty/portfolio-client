@@ -1,26 +1,40 @@
 import { useState } from 'react';
 import Scroll from 'react-scroll';
 import { Button } from '@mui/material'
-const ScrollLink = Scroll.Link
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
+const ScrollLink = Scroll.Link;
 
 const Nav = () => {
-	const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
 
-	return (
+    return (
         <nav className="flex justify-between items-center w-full fixed top-0 bg-[#121212]/[.8] z-50 py-5 px-5 md:px-24 select-none">
             <section className="flex lg:hidden">
-                <div
+                <Button
                     className="space-y-2 [&>*]:hover:bg-gray-400 cursor-pointer [&>*]:transition-colors [&>*]:ease-in-out [&>*]:duration-300"
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        padding: '0',
+                        minWidth: '0',
+                    }}
+                    disableRipple={true}
                     onClick={() => setOpen((prev) => !prev)}
                 >
                     <span className="block h-0.5 w-8 bg-white"></span>
                     <span className="block h-0.5 w-8 bg-white"></span>
                     <span className="block h-0.5 w-8 bg-white"></span>
-                </div>
+                </Button>
 
                 <div className={open ? 'showNav' : 'hideNav'}>
-                    <div
-                        className="absolute top-0 right-0 px-5 py-5 md:px-24"
+                    <Button
+                        className="px-5 py-7 md:px-24"
+                        style={{
+                            position: 'absolute',
+                            top: '17px',
+                            left: '5px',
+                        }}
+                        disableRipple={true}
                         onClick={() => setOpen(false)}
                     >
                         <svg
@@ -35,7 +49,7 @@ const Nav = () => {
                             <line x1="18" y1="6" x2="6" y2="18" />
                             <line x1="6" y1="6" x2="18" y2="18" />
                         </svg>
-                    </div>
+                    </Button>
                     <ul className="flex flex-col items-center justify-between min-h-[250px]">
                         <li>
                             <ScrollLink

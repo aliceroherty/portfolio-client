@@ -1,0 +1,5 @@
+[redirects]
+  [redirects.path]
+    from = "/"
+    to = "/www"
+    status = 301

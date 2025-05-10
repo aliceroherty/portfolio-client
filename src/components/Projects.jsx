@@ -30,14 +30,11 @@ const Projects = () => {
                     setProjects(results);
                 } else if (res.status == 403) {
                     tokens = await refresh(tokens.refreshToken);
-                    res = await fetch(
-                        `${import.meta.env.VITE_API_URL}/projects`,
-                        {
-                            headers: {
-                                Authorization: `Bearer ${tokens.accessToken}`,
-                            },
-                        }
-                    );
+                    await fetch(`${import.meta.env.VITE_API_URL}/projects`, {
+                        headers: {
+                            Authorization: `Bearer ${tokens.accessToken}`,
+                        },
+                    });
                 }
 
                 await logout(tokens.refreshToken);
@@ -50,6 +47,22 @@ const Projects = () => {
         }
 
         setLoading(false);
+    };
+
+    const renderProjects = () => {
+        if (loading) {
+            return <CircularProgress />;
+        } else if (error) {
+            return <p>Something went wrong retrieving the projects...</p>;
+        } else {
+            return (
+                <div className="w-full grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 lg:gap-8">
+                    {projects.map((project) => (
+                        <Project key={project._id} {...project} />
+                    ))}
+                </div>
+            );
+        }
     };
 
     useEffect(() => {
@@ -69,17 +82,7 @@ const Projects = () => {
                 <h4 className="lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left">
                     Projects
                 </h4>
-                {loading ? (
-                    <CircularProgress />
-                ) : error ? (
-                    <p>Something went wrong retrieving the projects...</p>
-                ) : (
-                    <div className="w-full grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 lg:gap-8">
-                        {projects.map((project) => (
-                            <Project key={project._id} {...project} />
-                        ))}
-                    </div>
-                )}
+                {renderProjects()}
             </motion.div>
         </Element>
     );

@@ -1,73 +1,70 @@
-import React, { useRef, useState, useEffect, Suspense } from 'react'
-import { Model } from './Model'
-import { Canvas } from '@react-three/fiber'
-import KeyboardAnimation from './KeyboardAnimation'
+// filepath: /home/aliceroherty/git/portfolio/portfolio-client/src/components/Keyboard/KeyboardRenderer.jsx
+import React, { Suspense, useState, useEffect, useRef, useMemo } from 'react';
+import { Canvas } from '@react-three/fiber';
+import AnimatedModel from './AnimatedModel';
 
-const KeyboardRenderer = (props) => {
-	const [position, setPosition] = useState([2.25, 0.5, 0])
+// Create a memoized renderer to prevent unnecessary re-renders
+const KeyboardRenderer = React.memo(() => {
+    // Create a stable reference for the Canvas element
+    const canvasRef = useRef();
 
-	// Tailwind breakpoints
-	const sizes = {
-		sm: '640px',
-		md: '768px',
-		lg: '1024px',
-		xl: '1280px',
-		'2xl': '1536px',
-	}
+    // Create a stable state for visibility and rendering
+    const [ready, setReady] = useState(false);
 
-	const mesh = useRef()
-
+    // Only set ready once, never change it again
     useEffect(() => {
-        positionMesh();
-        window.addEventListener('resize', positionMesh);
+        // Small delay to ensure the DOM is ready
+        const timer = setTimeout(() => {
+            setReady(true);
+        }, 500);
 
-        return () => {
-            window.removeEventListener('resize', positionMesh);
-        };
-    }, []);
+        return () => clearTimeout(timer);
+    }, []); // Empty dependency array means this runs once
 
-    const positionMesh = () => {
-        let newPosition = []
-		if (window.matchMedia(`screen and (min-width: ${sizes.xl})`).matches) {
-			newPosition = [2.25, 0.5, 0]
-		} else if (
-			window.matchMedia(`screen and (min-width: ${sizes.lg})`).matches
-		) {
-			newPosition = [0, -0.6, 0]
-		} else {
-			newPosition = [0, -1, -3]
-        }
+    // Create stable Canvas properties as a memoized object
+    const canvasProps = useMemo(
+        () => ({
+            style: {
+                zIndex: 0,
+                position: 'absolute',
+                top: 0,
+                left: 0,
+            },
+            gl: {
+                alpha: true,
+                antialias: true,
+                preserveDrawingBuffer: true,
+                powerPreference: 'default',
+                depth: true,
+                stencil: false,
+            },
+            dpr: 1, // Fixed lower DPR to reduce memory usage
+            frameloop: 'always', // Always run the animation frame
+        }),
+        []
+    ); // Empty dependency array means this never changes
 
-        setPosition((prev) => {
-            // Only update state if it has actually changed
-            if (
-                prev[0] === newPosition[0] &&
-                prev[1] === newPosition[1] &&
-                prev[2] === newPosition[2]
-            ) {
-                return prev
-            }
-            return newPosition
-        });
-	}
+    // If not ready, render nothing
+    if (!ready) return null;
 
     return (
-        <Suspense fallback={null}>
-            <Canvas
-                style={{ zIndex: 0, position: 'absolute', top: 0, left: 0 }}
-            >
-                <Model
-                    position={position}
-                    setMesh={(ref) => (mesh.current = ref)}
-                    rotation={[0, 0, 0]}
-                    scale={0.7}
-                />
-                <KeyboardAnimation mesh={mesh} />
-                <ambientLight intensity={0.7} />
-                <directionalLight intensity={1.2} position={[0, 0, 25]} />
-            </Canvas>
-        </Suspense>
+        <div
+            style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                overflow: 'hidden',
+            }}
+        >
+            <Suspense fallback={null}>
+                <Canvas ref={canvasRef} {...canvasProps}>
+                    <AnimatedModel />
+                </Canvas>
+            </Suspense>
+        </div>
     );
-}
+});
 
-export default KeyboardRenderer
+export default KeyboardRenderer;

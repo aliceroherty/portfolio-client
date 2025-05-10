@@ -1,10 +1,13 @@
+// filepath: /home/aliceroherty/git/portfolio/portfolio-client/src/components/Home.jsx
+import { memo } from 'react';
 import KeyboardRenderer from './Keyboard/KeyboardRenderer';
 import { Button } from '@mui/material';
 import DownArrowIcon from '@mui/icons-material/KeyboardArrowDown';
 import Scroll from 'react-scroll';
 const ScrollLink = Scroll.Link;
 
-const Home = () => {
+// Memoize the component to prevent unnecessary re-renders
+const Home = memo(() => {
     return (
         <div className="h-screen flex" id="home">
             <div className="w-full text-center lg:w-4/6 lg:text-left h-1/2 z-10 flex flex-col items-center lg:items-start pt-24">
@@ -32,11 +35,11 @@ const Home = () => {
                     </Button>
                 </ScrollLink>
             </div>
-            <div>
+            <div className="z-0">
                 <KeyboardRenderer />
             </div>
         </div>
     );
-};
+});
 
 export default Home;

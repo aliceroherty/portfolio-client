@@ -30,11 +30,16 @@ const Projects = () => {
                     setProjects(results);
                 } else if (res.status == 403) {
                     tokens = await refresh(tokens.refreshToken);
-                    await fetch(`${import.meta.env.VITE_API_URL}/projects`, {
-                        headers: {
-                            Authorization: `Bearer ${tokens.accessToken}`,
-                        },
-                    });
+                    res = await fetch(
+                        `${import.meta.env.VITE_API_URL}/projects`,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${tokens.accessToken}`,
+                            },
+                        }
+                    );
+                    const results = await res.json();
+                    setProjects(results);
                 }
 
                 await logout(tokens.refreshToken);

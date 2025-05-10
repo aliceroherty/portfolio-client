@@ -7,17 +7,31 @@ Files: ./public/assets/keyboard.glb [7.21MB] > /home/aliceroherty/git/portfolio/
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function Model(props) {
-  const { nodes, materials } = useGLTF('/../../src/components/Keyboard/keyboard-transformed.glb')
-  return (
-    <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.Cube001.geometry} material={materials.PaletteMaterial002} />
-        <mesh geometry={nodes.Cube001_1.geometry} material={materials.PaletteMaterial003} />
-        <mesh geometry={nodes.Cube001_2.geometry} material={materials.PaletteMaterial001} />
-      </group>
-    </group>
-  )
-}
+// Set DRACO path config and use an absolute path
+// This prevents path resolution issues
+const MODEL_PATH = '/assets/keyboard.glb'
 
-useGLTF.preload('/../../src/components/Keyboard/keyboard-transformed.glb')
+export const Model = React.memo((props) => {
+    const { nodes, materials } = useGLTF(MODEL_PATH);
+    return (
+        <group {...props} dispose={null}>
+            <group rotation={[-Math.PI / 2, 0, 0]}>
+                <mesh
+                    geometry={nodes.Cube001.geometry}
+                    material={materials.PaletteMaterial002}
+                />
+                <mesh
+                    geometry={nodes.Cube001_1.geometry}
+                    material={materials.PaletteMaterial003}
+                />
+                <mesh
+                    geometry={nodes.Cube001_2.geometry}
+                    material={materials.PaletteMaterial001}
+                />
+            </group>
+        </group>
+    );
+});
+
+// Preload the model with the same path
+useGLTF.preload(MODEL_PATH)

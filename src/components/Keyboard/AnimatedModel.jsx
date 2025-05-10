@@ -1,89 +1,100 @@
-import React, { useState, useEffect } from 'react';
-import { motion, MotionConfig } from 'motion/react';
-import { ForwardedModel } from './ForwardedModel';
+// filepath: /home/aliceroherty/git/portfolio/portfolio-client/src/components/Keyboard/AnimatedModel.jsx
+import React, { useRef, useEffect } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { Model } from './Model';
 
-// Create a motion-enabled version of the wrapped Model component
-const MotionModel = motion(ForwardedModel);
+// This component uses pure Three.js animation with no React state updates
+// This prevents any re-renders during animation that could cause context loss
+const AnimatedModel = () => {
+    // Create refs for animation
+    const groupRef = useRef(null);
 
-const AnimatedModel = (props) => {
-    const [position, setPosition] = useState([2.25, 0.5, 0]);
+    // Create animation state in ref to avoid re-renders
+    const animationState = useRef({
+        time: 0,
+        baseY: 0,
+        basePosition: [0, 0, 0],
+        screenSize: 'md',
+    });
 
-    // Tailwind breakpoints
-    const sizes = {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
-    };
-
+    // Determine the base position based on screen size just once
     useEffect(() => {
-        positionMesh();
-        window.addEventListener('resize', positionMesh);
-        return () => window.removeEventListener('resize', positionMesh);
-    }, []);
+        // Update position based on screen size
+        const updatePosition = () => {
+            const positions = {
+                xl: [2.25, 1.15, 0],
+                lg: [0, -0.6, 0],
+                sm: [0, -1, -3],
+            };
 
-    const positionMesh = () => {
-        let newPosition = [];
-        if (window.matchMedia(`screen and (min-width: ${sizes.xl})`).matches) {
-            newPosition = [2.25, 1.15, 0];
-        } else if (
-            window.matchMedia(`screen and (min-width: ${sizes.lg})`).matches
-        ) {
-            newPosition = [0, -0.6, 0];
-        } else {
-            newPosition = [0, -1, -3]; // Moved smaller screen version back further
-        }
-
-        setPosition((prev) => {
-            // Only update state if it has actually changed
-            if (
-                prev[0] === newPosition[0] &&
-                prev[1] === newPosition[1] &&
-                prev[2] === newPosition[2]
-            ) {
-                return prev;
+            let size = 'sm';
+            if (window.innerWidth >= 1280) {
+                size = 'xl';
+            } else if (window.innerWidth >= 1024) {
+                size = 'lg';
             }
-            return newPosition;
-        });
-    };
 
-    // Animation variants
-    const modelAnimation = {
-        initial: { rotateX: Math.PI / 2, y: position[1] },
-        animate: {
-            rotateX: Math.PI / 2,
-            y: [position[1] - 0.1, position[1] + 0.1],
-            rotateZ: [-0.15, 0, 0.1, 0],
-            transition: {
-                y: {
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    duration: 2,
-                    ease: "easeInOut"
-                },
-                rotateZ: {
-                    repeat: Infinity,
-                    duration: 4,
-                    ease: "easeInOut",
-                    times: [0, 0.25, 0.75, 1]
-                }
+            // Only update state in the ref, not React state
+            animationState.current.basePosition = positions[size];
+            animationState.current.baseY = positions[size][1];
+            animationState.current.screenSize = size;
+
+            // Immediately apply position
+            if (groupRef.current) {
+                groupRef.current.position.x = positions[size][0];
+                groupRef.current.position.y = positions[size][1];
+                groupRef.current.position.z = positions[size][2];
             }
+        };
+
+        // Initial position
+        updatePosition();
+
+        // Add resize listener
+        window.addEventListener('resize', updatePosition);
+
+        // Cleanup
+        return () => window.removeEventListener('resize', updatePosition);
+    }, []); // Run only once
+
+    // Animation loop using useFrame - this doesn't cause re-renders
+    useFrame((_, delta) => {
+        if (!groupRef.current) return;
+
+        // Simple time accumulation
+        animationState.current.time += delta;
+
+        try {
+            // Get reference to the group
+            const group = groupRef.current;
+
+            // Floating animation - simple sine wave
+            const floatY = Math.sin(animationState.current.time) * 0.1;
+            group.position.y = animationState.current.baseY + floatY;
+
+            // Rotation animation - simple sine wave with offset
+            const rotZ = Math.sin(animationState.current.time * 0.5) * 0.1;
+            group.rotation.z = rotZ;
+
+            // Keep keys facing user
+            group.rotation.x = Math.PI / 2;
+        } catch (error) {
+            console.error('Animation error:', error);
         }
-    };
+    });
 
     return (
-        <MotionConfig reducedMotion="user">
+        <>
             <ambientLight intensity={0.7} />
             <directionalLight intensity={1.2} position={[0, 0, 25]} />
-            <MotionModel
-                initial="initial"
-                animate="animate"
-                variants={modelAnimation}
-                position={position}
-                scale={0.7}
-            />
-        </MotionConfig>
+            <group
+                ref={groupRef}
+                rotation={[Math.PI / 2, 0, 0]} // Initial rotation
+                scale={0.75}
+            >
+                <Model />
+            </group>
+        </>
     );
 };
 

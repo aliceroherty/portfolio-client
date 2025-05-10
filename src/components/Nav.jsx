@@ -140,7 +140,7 @@ const Nav = () => {
                     </li>
                     <li>
                         <Link
-                            to="timeline"
+                            to="experience"
                             className="cursor-pointer text-white text-xl hover:text-gray-500 transition-colors ease-in-out duration-300"
                             activeClass="active"
                             smooth

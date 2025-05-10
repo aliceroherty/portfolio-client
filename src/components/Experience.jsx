@@ -57,8 +57,8 @@ const Experience = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 className="w-full text-left mt-1 mb-24"
-                id="timeline"
-                name="timeline"
+                id="experience"
+                name="experience"
             >
                 <h4 className="lg:text-6xl text-5xl font-bold sm:mt-0 mb-16 text-pink-300 text-center lg:text-left">
                     Experience

@@ -15,5 +15,4 @@ A professional portfolio to showcase my work experience, skillset, and past proj
 - Formik
 - Yup
 
-## Usage
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/eb1b1455-9d43-47d3-8b57-d6818d3f9779/deploy-status)](https://app.netlify.com/sites/alice-carrier/deploys)

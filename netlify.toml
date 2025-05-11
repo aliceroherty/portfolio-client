@@ -1,5 +1,5 @@
-[redirects]
-  [redirects.path]
-    from = "/"
-    to = "/www"
-    status = 301
+[[redirects]]
+  from = "https://alice-carrier.com/*"
+  to = "https://www.alice-carrier.com/:splat"
+  status = 301
+  force = true

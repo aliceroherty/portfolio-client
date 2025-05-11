@@ -1,3 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  # Set VITE_API_KEY in netlify UI as we can't check it into soure control
+  environment = { NODE_VERSION = "22", PORT="3000", VITE_API_URL="https://portfolio-server-hxei.onrender.com" }
+
 [[redirects]]
   from = "https://alice-carrier.com/*"
   to = "https://www.alice-carrier.com/:splat"
